@@ -28,4 +28,4 @@ exit()
 ## pip freeze
 ```bash
 pip freeze > requirements.txt
-```"# Django_Selenium_Lab" 
+```

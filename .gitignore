@@ -1,0 +1,6 @@
+db.sqlite3
+*/__pycache__/
+*/*/__pycache__/
+.coverage
+htmlcov
+.DS_Store
