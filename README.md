@@ -43,6 +43,15 @@ pip freeze > requirements.txt
 celery -A django_selenium_lab worker -l info
 ```
 
+### workerとの接続確認
+```python
+# python manage.py shell
+from scraper.tasks import add
+r = add.delay(40, 2)
+r.id, r.status           # （ここで 'PENDING' でもOK）
+r.get(timeout=10)        # ← 42 が返れば接続も処理もOK
+```
+
 
 ### MEMO
 Python Celeryで非同期タスクを実行するには、tasks.pyで定義したタスクをviews.pyなどから呼び出します<br>
