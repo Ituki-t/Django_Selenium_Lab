@@ -9,6 +9,7 @@
 ```bash
 pip install django
 pip install "celery[redis]" redis # Celery + Redisサポート, Python用のRedisクライアント
+pip install django-celery-results # Celeryの実行結果をDBへ保存
 pip install selenium 
 pip install webdriver-manager # ChromeDriverを自動ダウンロードツール
 ```
@@ -37,6 +38,13 @@ pip freeze > requirements.txt
 ```
 
 ## Celery
+### ワーカー起動
+```bash
+celery -A django_selenium_lab worker -l info
+```
+
+
+### MEMO
 Python Celeryで非同期タスクを実行するには、tasks.pyで定義したタスクをviews.pyなどから呼び出します<br>
 以下例([Celery 5.5.3 documentation » Django » First steps with Django](https://docs.celeryq.dev/en/v5.5.3/django/first-steps-with-django.html))より
 ```python

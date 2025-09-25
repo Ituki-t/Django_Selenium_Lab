@@ -8,6 +8,7 @@ click-plugins==1.1.1.2
 click-repl==0.3.0
 colorama==0.4.6
 Django==5.2.6
+django_celery_results==2.6.0
 kombu==5.5.4
 packaging==25.0
 prompt_toolkit==3.0.52
