@@ -38,7 +38,7 @@ pip freeze > requirements.txt
 
 ## Celery
 Python Celeryで非同期タスクを実行するには、tasks.pyで定義したタスクをviews.pyなどから呼び出します<br>
-以下例[Celery 5.5.3 documentation » Django » First steps with Django](https://docs.celeryq.dev/en/v5.5.3/django/first-steps-with-django.html)より
+以下例([Celery 5.5.3 documentation » Django » First steps with Django](https://docs.celeryq.dev/en/v5.5.3/django/first-steps-with-django.html))より
 ```python
 # views.py
 def create_user(request):
