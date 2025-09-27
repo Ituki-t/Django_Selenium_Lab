@@ -52,6 +52,25 @@ r.id, r.status           # （ここで 'PENDING' でもOK）
 r.get(timeout=10)        # ← 42 が返れば接続も処理もOK
 ```
 
+### Celery Woker と django-db の接続確認
+```python
+from scraper.tasks import store_result_test
+t = 'test用textです。'
+store_result_test(t)
+c = CeleryTestModel.objects.all()
+print(c) # 「test用textです。」が表示されたらOk
+```
+- ※ 管理画面でも確認可能
+
+### django-celery-result
+- Celery Woker の処理を Django のDBに保存するには必要らしい 
+- `tasks.py`で`models.py`からモデルをインストールしてそのテーブルにtaskの処理を保存しているわけだからあまり必要性を感じない
+- 必要なのか？
+#### マイグレーション
+```python
+python manage.py migrate django_celery_results
+```
+
 
 ### MEMO
 Python Celeryで非同期タスクを実行するには、tasks.pyで定義したタスクをviews.pyなどから呼び出します<br>
