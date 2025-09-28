@@ -5,3 +5,4 @@ db.sqlite3
 htmlcov
 .DS_Store
 scraper/tasks.py
+.env
