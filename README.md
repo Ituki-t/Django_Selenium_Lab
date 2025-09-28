@@ -28,14 +28,6 @@ print("PING:", r.ping())
 exit()
 ```
 
-## Installing requirements
-```bash
-$ pip install -r requirements.txt
-```
-## pip freeze
-```bash
-pip freeze > requirements.txt
-```
 
 ## Celery
 ### ワーカー起動
@@ -90,3 +82,12 @@ def send_email(user_pk):
     # send email ...
 ```
 
+
+## Installing requirements
+```bash
+$ pip install -r requirements.txt
+```
+## pip freeze
+```bash
+pip freeze > requirements.txt
+```
