@@ -4,5 +4,5 @@ db.sqlite3
 .coverage
 htmlcov
 .DS_Store
-scraper/tasks.py
+# scraper/tasks.py
 .env

@@ -3,7 +3,7 @@
 - `Selenium`で取得した情報を`Sqlite`に保存
 - Djangoアプリで取得した情報を一覧表示
 - Seleniumで用いるURLは個人情報を隠すため適当に変更する予定
-- githubには`tasks.py`をgitの管理から外して`tasks_sample.py`を管理していく
+- ~~githubには`tasks.py`をgitの管理から外して`tasks_sample.py`を管理していく~~
 
 ## pip install
 ```bash
