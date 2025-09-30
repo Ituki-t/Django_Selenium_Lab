@@ -1,7 +1,5 @@
 from celery import shared_task
 import os
-from dotenv import load_dotenv
-load_dotenv() # .envファイルの読み込み
 
 # スクレイピング関連のインポート
 from .models import Syllabus
@@ -29,10 +27,12 @@ def collect_syllabus_to_db_task():
     # 後でget_or_createに変更するかも
     Syllabus.objects.all().delete()
 
+
     driver = make_selenium_driver()
 
     try:
         base_url = os.getenv("SYLLABUS_URL")
+        # base_url = url # debug
         years_url = collect_years_url(driver, base_url)
         department_url = collect_department_url(driver, years_url)
         syllabus_records = collect_lectures(driver, department_url)

@@ -1,5 +1,8 @@
 import os
 from celery import Celery 
+# from dotenv import load_dotenv, find_dotenv
+# load_dotenv(find_dotenv()) # 環境変数を読み込む
+
 
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_selenium_lab.settings')

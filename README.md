@@ -34,6 +34,7 @@ exit()
 ```bash
 celery -A django_selenium_lab worker -l info
 ```
+- Celery Workerでシラバスの収集を行うことができた。Celery関係の設定をいじったら，celery worker を再起動させる必要がある
 
 ### workerとの接続確認
 ```python
