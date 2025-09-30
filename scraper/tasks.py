@@ -37,12 +37,12 @@ def collect_syllabus_to_db_task():
         department_url = collect_department_url(driver, years_url)
         syllabus_records = collect_lectures(driver, department_url)
         syllabus_records = record_dedup(syllabus_records)
-        print(syllabus_records)
-        # for record in syllabus_records:
-        #     Syllabus.objects.create(
-        #         course_name=record['course_name'],
-        #         course_url=record['course_url']
-        #     )
+        # print(syllabus_records)
+        for record in syllabus_records:
+            Syllabus.objects.create(
+                course_name=record['lecture'],
+                course_url=record['url']
+            )
 
     finally:
         if driver:
