@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Syllabus
 from .tasks import collect_syllabus_to_db_task
 
@@ -12,14 +12,14 @@ def course_list(request):
     query = request.GET.get('course_query')
     if query:
         courses = courses.filter(course_name__icontains=query)
-    
+
     context = {
         'courses': courses
     }
-    
+
     return render(request, 'scraper/course_list.html', context)
 
 
 def collect_courses(request):
     collect_syllabus_to_db_task.delay()
-    return render(request, 'scraper/course_list.html')
+    return redirect('scraper:course_list')
