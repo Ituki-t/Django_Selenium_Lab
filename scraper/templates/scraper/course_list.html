@@ -20,7 +20,7 @@ Course List
             <tr>
                 <td>{{ course.id }}</td>
                 <td>{{ course.course_name }}</td>
-                <td>{{ course.course_url }}</td>
+                <td><a href="{{ course.course_url }}">{{ course.course_url }}</a></td>
             </tr>
             {% endfor %}
         </tbody>
