@@ -8,6 +8,10 @@ from .models import Syllabus
 def course_list(request):
     courses = Syllabus.objects.all()
     
+    query = request.GET.get('course_query')
+    if query:
+        courses = courses.filter(course_name__icontains=query)
+    
     context = {
         'courses': courses
     }
