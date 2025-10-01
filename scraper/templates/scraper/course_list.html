@@ -7,10 +7,18 @@ Course List
 {% block content %}
 <div class="container mt-4">
     <h1 class="mb-4">Course List</h1>
-        <form class="d-flex" role="search"  method="GET">
-            <input class="form-control me-2" type="search" name = "course_query" placeholder="講義を入力" aria-label="Search" required>
-        <button class="btn btn-outline-success" type="submit">検索</button>
-        </form>
+    
+    <!-- 講義情報を収集する -->
+    <form action="{% url 'scraper:collect_courses' %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">コースを収集</button>
+    </form>
+
+    <form class="d-flex" role="search"  method="GET">
+        <input class="form-control me-2" type="search" name = "course_query" placeholder="講義を入力" aria-label="Search" required>
+    <button class="btn btn-outline-success" type="submit">検索</button>
+    </form>
+
     <table class="table table-striped">
         <thead>
             <tr>

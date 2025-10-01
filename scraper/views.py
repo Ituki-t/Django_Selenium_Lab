@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Syllabus
+from .tasks import collect_syllabus_to_db_task
 
 
 # Create your views here.
@@ -7,7 +8,7 @@ from .models import Syllabus
 
 def course_list(request):
     courses = Syllabus.objects.all()
-    
+
     query = request.GET.get('course_query')
     if query:
         courses = courses.filter(course_name__icontains=query)
@@ -17,3 +18,8 @@ def course_list(request):
     }
     
     return render(request, 'scraper/course_list.html', context)
+
+
+def collect_courses(request):
+    collect_syllabus_to_db_task.delay()
+    return render(request, 'scraper/course_list.html')
