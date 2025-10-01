@@ -7,7 +7,7 @@ Course List
 {% block content %}
 <div class="container mt-4">
     <h1 class="mb-4">Course List</h1>
-    
+
     <!-- 講義情報を収集する -->
     <form action="{% url 'scraper:collect_courses' %}" method="POST">
         {% csrf_token %}
@@ -22,20 +22,26 @@ Course List
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Course id</th>
+                <th scope="col">ID</th>
                 <th scope="col">Course Name</th>
+                <th scope="col">Course Year</th>
                 <th scope="col">Course Url</th>
             </tr>
         </thead>
+        {% if courses %}
         <tbody>
             {% for course in courses %}
             <tr>
                 <td>{{ course.id }}</td>
                 <td>{{ course.course_name }}</td>
+                <td>{{ course.course_year }}</td>
                 <td><a href="{{ course.course_url }}">{{ course.course_url }}</a></td>
             </tr>
             {% endfor %}
         </tbody>
+        {% else %}
+        <p>まだ講義が取得されていません。</p>
+        {% endif %}
     </table>
 
 

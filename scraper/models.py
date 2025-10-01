@@ -15,6 +15,10 @@ class CeleryTestModel(models.Model):
 class Syllabus(models.Model):
     course_name = models.CharField(max_length=100)
     course_url = models.URLField(max_length=200)
+    course_year = models.CharField(
+        max_length=4,
+        default='yet'
+        )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
