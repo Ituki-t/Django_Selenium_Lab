@@ -1,8 +1,7 @@
 ## About this project
 - Djangoアプリの裏で`Celery`を用いて`Selenium`で情報を取得
-- `Selenium`で取得した情報を`Sqlite`に保存
+- `Selenium`で取得した情報を`Sqlite3`に保存
 - Djangoアプリで取得した情報を一覧表示
-- Seleniumで用いるURLは個人情報を隠すため適当に変更する予定
 - ~~githubには`tasks.py`をgitの管理から外して`tasks_sample.py`を管理していく~~
 
 ## pip install
@@ -10,7 +9,7 @@
 pip install django
 pip install "celery[redis]" redis # Celery + Redisサポート, Python用のRedisクライアント
 pip install django-celery-results # Celeryの実行結果をDBへ保存
-pip install selenium 
+pip install selenium
 pip install webdriver-manager # ChromeDriverを自動ダウンロードツール
 ```
 
@@ -56,7 +55,7 @@ print(c) # 「test用textです。」が表示されたらOk
 - ※ 管理画面でも確認可能
 
 ### django-celery-result
-- Celery Woker の処理を Django のDBに保存するには必要らしい 
+- Celery Woker の処理を Django のDBに保存するには必要らしい
 - `tasks.py`で`models.py`からモデルをインストールしてそのテーブルにtaskの処理を保存しているわけだからあまり必要性を感じない
 - 必要なのか？
 #### マイグレーション
