@@ -12,7 +12,15 @@ def course_list(request):
     courses = Syllabus.objects.all()
 
     query = request.GET.get('search_query')
-    if query:
+    if ' ' in query:
+        querys = query.split(' ') # ['query1', 'query2', ...]
+        # for で filter を繰り返すと AND 検索になる
+        for q in querys:
+            courses = courses.filter(
+                Q(course_name__icontains=q) |
+                Q(course_department__icontains=q)
+            )
+    elif query:
         courses = courses.filter(
             Q(course_name__icontains=query) |
             Q(course_department__icontains=query)
@@ -25,6 +33,6 @@ def course_list(request):
     return render(request, 'scraper/course_list.html', context)
 
 
-def collect_courses(request):
+def collect_courses():
     collect_syllabus_to_db_task.delay()
     return redirect('scraper:course_list')
