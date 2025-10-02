@@ -1,6 +1,6 @@
 ## About this project
 - Djangoアプリの裏で`Celery`を用いて`Selenium`で情報を取得
-- `Selenium`で取得した情報を`Sqlite3`に保存
+- `Selenium`で取得した情報を`Sqlite3g`に保存
 - Djangoアプリで取得した情報を一覧表示
 - ~~githubには`tasks.py`をgitの管理から外して`tasks_sample.py`を管理していく~~
 
@@ -32,6 +32,10 @@ exit()
 ### ワーカー起動
 ```bash
 celery -A django_selenium_lab worker -l info
+```
+- Windowsはこっちを推奨しい
+```bash
+celery -A django_selenium_lab worker -l info --pool=solo
 ```
 - Celery Workerでシラバスの収集を行うことができた。Celery関係の設定をいじったら，celery worker を再起動させる必要がある
 
