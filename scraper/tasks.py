@@ -21,7 +21,7 @@ def add(x, y):
     return x + y
 
 
-@shared_task(name='scraper.collect_syllabus_to_db_task')
+@shared_task()
 def collect_syllabus_to_db_task():
     # 既存のデータを削除してから情報取得
     # 後でget_or_createに変更するかも
@@ -42,7 +42,8 @@ def collect_syllabus_to_db_task():
             Syllabus.objects.create(
                 course_name=record['lecture'],
                 course_url=record['url'],
-                course_year=record['year']
+                course_year=record['year'],
+                course_department=record['department']
             )
 
     finally:

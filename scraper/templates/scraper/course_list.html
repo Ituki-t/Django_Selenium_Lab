@@ -6,12 +6,12 @@ Course List
 
 {% block content %}
 <div class="container mt-4">
-    <h1 class="mb-4">Course List</h1>
+    <h1 class="mb-4">Lecture List</h1>
 
     <!-- 講義情報を収集する -->
     <form action="{% url 'scraper:collect_courses' %}" method="POST">
         {% csrf_token %}
-        <button class="btn btn-primary" type="submit">コースを収集</button>
+        <button class="btn btn-primary" type="submit">講義名を収集</button>
     </form>
 
     <form class="d-flex" role="search"  method="GET">
@@ -24,6 +24,7 @@ Course List
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Course Name</th>
+                <th scope="col">Department</th>
                 <th scope="col">Course Year</th>
                 <th scope="col">Course Url</th>
             </tr>
@@ -34,6 +35,7 @@ Course List
             <tr>
                 <td>{{ course.id }}</td>
                 <td>{{ course.course_name }}</td>
+                <td>{{ course.course_department }}</td>
                 <td>{{ course.course_year }}</td>
                 <td><a href="{{ course.course_url }}">{{ course.course_url }}</a></td>
             </tr>

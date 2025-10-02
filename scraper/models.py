@@ -19,6 +19,7 @@ class Syllabus(models.Model):
         max_length=4,
         default='yet'
         )
+    course_department = models.CharField(max_length=100, default='学部不明')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
