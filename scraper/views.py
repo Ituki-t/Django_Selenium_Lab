@@ -3,6 +3,7 @@ from django.db.models import Q
 
 from .models import Syllabus
 from .tasks import collect_syllabus_to_db_task
+from .utils import split_whitespace
 
 
 # Create your views here.
@@ -12,8 +13,8 @@ def course_list(request):
     courses = Syllabus.objects.all()
 
     query = request.GET.get('search_query')
-    if ' ' in query:
-        querys = query.split(' ') # ['query1', 'query2', ...]
+    if ' ' in query or '' in query:
+        querys = split_whitespace(query)
         # for で filter を繰り返すと AND 検索になる
         for q in querys:
             courses = courses.filter(
