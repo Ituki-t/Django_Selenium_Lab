@@ -25,11 +25,7 @@ def course_list(request):
             Q(course_department__icontains=q)
         )
 
-    context = {
-        'courses': courses
-    }
-
-    return render(request, 'scraper/course_list.html', context)
+    return render(request, 'scraper/course_list.html', {'courses': courses})
 
 
 def collect_courses():
