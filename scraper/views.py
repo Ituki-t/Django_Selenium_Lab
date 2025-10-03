@@ -13,18 +13,16 @@ def course_list(request):
     courses = Syllabus.objects.all()
 
     query = request.GET.get('search_query')
-    if ' ' in query or '' in query:
-        querys = split_whitespace(query)
-        # for で filter を繰り返すと AND 検索になる
-        for q in querys:
-            courses = courses.filter(
-                Q(course_name__icontains=q) |
-                Q(course_department__icontains=q)
-            )
-    elif query:
+    if not query:
+        # 初回アクセスや空入力は全件（ポリシーに応じて空リストでもOK）
+        return render(request, 'scraper/course_list.html', {'courses': courses})
+
+    querys = split_whitespace(query)
+    # for で filter を繰り返すと AND 検索になる
+    for q in querys:
         courses = courses.filter(
-            Q(course_name__icontains=query) |
-            Q(course_department__icontains=query)
+            Q(course_name__icontains=q) |
+            Q(course_department__icontains=q)
         )
 
     context = {
