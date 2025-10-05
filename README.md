@@ -38,6 +38,7 @@ celery -A django_selenium_lab worker -l info
 celery -A django_selenium_lab worker -l info --pool=solo
 ```
 - Celery Workerでシラバスの収集を行うことができた。Celery関係の設定をいじったら，celery worker を再起動させる必要がある
+- Celeryワーカーは起動時のコードと環境変数をプロセスに読み込んだまま走り続けるらしい...
 
 ### workerとの接続確認
 ```python

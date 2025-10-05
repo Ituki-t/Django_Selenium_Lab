@@ -4,7 +4,7 @@ import os
 # スクレイピング関連のインポート
 from .models import Syllabus
 from scraper.scraping.collect_syllabus import collect_years_url, collect_department_url, collect_lectures, record_dedup
-from .utils import make_selenium_driver
+from .utils import make_selenium_driver, parse_int_year, dedup_keep_latest_year
 
 from pprint import pprint # debug
 
@@ -32,12 +32,12 @@ def collect_syllabus_to_db_task():
 
     try:
         base_url = os.getenv("SYLLABUS_URL")
-        # base_url = url # debug
         years_url = collect_years_url(driver, base_url)
         department_url = collect_department_url(driver, years_url)
         syllabus_records = collect_lectures(driver, department_url)
-        syllabus_records = record_dedup(syllabus_records)
-        # print(syllabus_records)
+        # syllabus_records = record_dedup(syllabus_records)
+        syllabus_records = dedup_keep_latest_year(syllabus_records)
+        print(syllabus_records)
         for record in syllabus_records:
             Syllabus.objects.create(
                 course_name=record['lecture'],
