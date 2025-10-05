@@ -28,6 +28,11 @@ def course_list(request):
     return render(request, 'scraper/course_list.html', {'courses': courses})
 
 
-def collect_courses():
+def course_list_all(request):
+    Syllabus.objects.all()
+    return redirect('scraper:course_list')
+
+
+def collect_courses(request):
     collect_syllabus_to_db_task.delay()
     return redirect('scraper:course_list')
