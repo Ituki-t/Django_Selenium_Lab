@@ -16,13 +16,13 @@ Course List
 
     <h2 class="mt-4">講義を検索</h2>
 
-    <form class="d-flex" role="search"  method="GET">
-        <input class="form-control me-2" type="search" name = "search_query" placeholder="講義名 または学部を入力" aria-label="Search" required>
-    <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
     <form action="{% url 'scraper:course_list_all' %}" method="POST">
         {% csrf_token %}
         <button class="btn btn-primary" type="submit">すべての講義を表示</button>
+    </form>
+    <form class="d-flex" role="search"  method="GET">
+        <input class="form-control me-2" type="search" name = "search_query" placeholder="講義名 または学部を入力" aria-label="Search" required>
+    <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
 
 
